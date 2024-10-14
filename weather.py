@@ -15,7 +15,7 @@ def main():
 
     Uses the WeatherApiClient to fetch weather data from the OpenWeatherMap API.
     """
-    lat = float(input("Enter the latitude: "))12
+    lat = float(input("Enter the latitude: "))
     lon = float(input("Enter the longitude: "))
     api_client = WeatherApiClient(get_api_key())
     weather_service = WeatherService(api_client)

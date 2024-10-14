@@ -34,13 +34,17 @@ class WeatherService:
             dict: A dictionary containing weather information, including place name,
             temperature, humidity, condition, and wind speed.
         """
-
-        data = self.api_client.get_weather_data(lat, lon)
-        return {
-            "place_name": data["name"],
-            "location": f"Lat: {lat}, Lon: {lon}",
-            "temperature": data["main"]["temp"],
-            "humidity": data["main"]["humidity"],
-            "condition": data["weather"][0]["description"],
-            "wind_speed": data["wind"]["speed"],
-        }
+        try:
+            data = self.api_client.get_weather_data(lat, lon)
+            return {
+                "place_name": data["name"],
+                "location": f"Lat: {lat}, Lon: {lon}",
+                "temperature": data["main"]["temp"],
+                "humidity": data["main"]["humidity"],
+                "condition": data["weather"][0]["description"],
+                "wind_speed": data["wind"]["speed"],
+            }
+        except KeyError as e:
+            raise ValueError(f"Missing expected data in the API response: {e}")
+        except Exception as e:
+            raise SystemError(f"An error occurred while fetching weather data: {e}")
