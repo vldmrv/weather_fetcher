@@ -16,7 +16,6 @@ Weather Fetcher is a simple command-line application that retrieves current weat
 - **Python 3.x**
 - **Required Libraries**:
   - `requests`
-  - `dotenv`
 
 ### Installation
 
